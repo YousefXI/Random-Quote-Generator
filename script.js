@@ -1,9 +1,9 @@
 const quoteText = document.querySelector(".quote"),
    authorName = document.querySelector(".author .name"),
-   quoteBtn = document.querySelector("button"),
-   soundBtn = documen.querySelector(".sound"),
-   copyBtn = documen.querySelector(".copy"),
-   twitterBtn = documen.querySelector(".twitter");
+   quoteBtn = document.querySelector("button");
+//soundBtn = documen.querySelector(".sound"),
+//copyBtn = documen.querySelector(".copy"),
+//twitterBtn = documen.querySelector(".twitter");
 
 // Random Quote Function
 function randomQuote() {
@@ -20,5 +20,12 @@ function randomQuote() {
       })
    );
 }
+
+soundBtn.addEventListener("click", () => {
+   // the SpeechSynthesisUtterance is a Web Speech API That Represents a Speech Request
+   let utterance = new SpeechSynthesisUtterance(`${quoteText.innerText}`);
+   speechSynthesis.speak(utterance); // Speak Method of SpeechSynthesisUtterance
+});
+//FIXA BUG
 
 quoteBtn.addEventListener("click", randomQuote);
