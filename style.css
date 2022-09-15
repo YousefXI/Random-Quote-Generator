@@ -3,8 +3,8 @@
 /* ------------------ */
 
 :root {
-   --primary: #5372f0;
-   --gray: #bbc5cf;
+   --primary: #4368fb;
+   --gray: #ccc;
    --dark-gray: #464646;
    --light: #ffffff;
 }
@@ -130,7 +130,7 @@ body {
 }
 
 .wrapper .buttons {
-   border-top: 1px solid #ccc;
+   border-top: 1px solid var(--gray);
 }
 
 .buttons .features {

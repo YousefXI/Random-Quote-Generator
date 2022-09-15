@@ -1,9 +1,8 @@
 const quoteText = document.querySelector(".quote"),
    authorName = document.querySelector(".author .name"),
-   quoteBtn = document.querySelector("button");
-//soundBtn = documen.querySelector(".sound"),
-//copyBtn = documen.querySelector(".copy"),
-//twitterBtn = documen.querySelector(".twitter");
+   quoteBtn = document.querySelector("button"),
+   copyBtn = document.querySelector(".copy"),
+   twitterBtn = document.querySelector(".twitter");
 
 // Random Quote Function
 function randomQuote() {
@@ -12,7 +11,6 @@ function randomQuote() {
    // Fetching Random Quotes From The API and Parsing it
    fetch("https://api.quotable.io/random").then((res) =>
       res.json().then((result) => {
-         console.log(result);
          quoteText.innerText = result.content;
          authorName.innerText = result.author;
          quoteBtn.innerText = "Next Quote";
@@ -21,11 +19,14 @@ function randomQuote() {
    );
 }
 
-soundBtn.addEventListener("click", () => {
-   // the SpeechSynthesisUtterance is a Web Speech API That Represents a Speech Request
-   let utterance = new SpeechSynthesisUtterance(`${quoteText.innerText}`);
-   speechSynthesis.speak(utterance); // Speak Method of SpeechSynthesisUtterance
+copyBtn.addEventListener("click", () => {
+   // Copying the Quote Text on copyBtn Click
+   navigator.clipboard.writeText(quoteText.innerText);
 });
-//FIXA BUG
+
+twitterBtn.addEventListener("click", () => {
+   let tweetUrl = `https://twitter.com/intent/tweet?url=${quoteText.innerText}`;
+   window.open(tweetUrl, "_blank"); // Opening Twitter Tab Window
+});
 
 quoteBtn.addEventListener("click", randomQuote);
